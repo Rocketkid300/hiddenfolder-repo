@@ -10,40 +10,49 @@ repo/
 └── debs/             # compiled .deb packages (built by build.sh)
 ```
 
-## Add to Sileo
+## Add to Sileo (GitHub Pages — live now)
 
-### Option A — local server (fastest to test)
+Our repo is published at:
 
-1. Build once:
-   ```bash
-   ./repo/build.sh
-   ```
-2. Serve the repo on your network:
-   ```bash
-   cd repo && python3 -m http.server 8080
-   ```
-3. Note your computer's LAN IP (`ip addr` or `hostname -I`), e.g. `192.168.1.20`.
-4. On your iPhone (same Wi-Fi): **Sileo → Sources → ⨁ → Add Source** →
-   ```
-   http://192.168.1.20:8080
-   ```
-5. Install **Hidden Folder** (or `com.bigpickle.hiddenfolder`) → Respring (Sileo does it for you).
+```
+https://rocketkid300.github.io/hiddenfolder-repo/
+```
 
-### Option B — GitHub Pages (permanent link, shares with friends)
+**Sileo → Sources → ⨁ → Add Source** → paste the URL above → **Add Anyway** on the unsigned warning → install **Hidden Folder**.
 
-1. Push this folder to GitHub (rename folder to `sileo-repo` for clarity):
-   ```bash
-   git init && git add -A && git commit -m "Hidden Folder repo" && git branch -M main
-   git remote add origin git@github.com:<you>/<repo>.git
-   git push -u origin main
-   ```
-2. GitHub → **Settings → Pages → Branch: main → /root → Save**.
-   Make sure a `.nojekyll` file exists at the repo root (included below).
-3. Your repo URL becomes:
-   ```
-   https://<you>.github.io/<repo>/
-   ```
-   Add that to Sileo.
+## Using the tweak (no Settings page needed)
+
+Everything lives inside the folder itself:
+
+1. Open the **App Library** → tap the 🔒 **Hidden** pod at the end.
+2. Tap the **⚙️ gear** (top-left) → **Set Passcode** → enter a 4-digit code twice.
+3. Flip the **Hide Mode** switch ON.
+4. **Hide:** tap any Home Screen app once (while Hide Mode is on).
+5. **Unhide:** long-press an app inside the Hidden folder.
+6. **Change/remove passcode, lock, or how-it-works:** ⚙️ gear inside the folder.
+
+Dependencies: `mobilesubstrate` (ElleKit on Dopamine) and `oldabi` (arm64e devices;
+if Sileo asks to add **ellekit.space** to resolve it, accept — it's the standard Dopamine repo).
+
+## Local building / hosting (optional)
+
+```
+repo/
+├── build.sh          # bootstrap Theos + build tweak + refresh the repo (one-shot)
+├── make-repo.sh      # regenerate Packages/Release from the .debs in debs/
+├── publish-github.sh # push repo/ to GitHub Pages (needs `gh` authed)
+└── debs/             # compiled .deb packages (built by build.sh)
+```
+
+Serve locally for testing:
+```bash
+cd repo && python3 -m http.server 8080   # then add http://<your-lan-ip>:8080 in Sileo
+```
+
+Rebuild + republish after code changes:
+```bash
+./repo/build.sh && ./repo/publish-github.sh
+```
 
 ## Signing (optional)
 
