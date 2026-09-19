@@ -22,3 +22,15 @@ MD5sum: 1a6bb83909f1276809b7692df7c54328
 SHA1: 6400da67a17ba14c9f1db7be65333b840cc0a242
 SHA256: c7ef4a925304383e5c04a17450dc6b6733b4bb2c131c94ce86108fcf8f3a2e91
 
+Package: oldabi
+Version: 0.2.3+bigpickle.1
+Architecture: iphoneos-arm64
+Maintainer: Big Pickle <bigpickle@noreply.github.com>
+Section: 
+Description: Support for legacy arm64e ABI in iOS 15.0+ (self-hosted build)
+Filename: debs/oldabi_0.2.3+bigpickle.1_iphoneos-arm64.deb
+Size: 9416
+MD5sum: 78791166c16015ef093f50642a347958
+SHA1: f048bb0fe4899f48ab9b7cefa5be1ca04d0fbe6d
+SHA256: 2e5ae2c8891617fa439f14a0cf3209debe316cef0456633a23f3fc7e3e12091c
+
