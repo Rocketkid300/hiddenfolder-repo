@@ -1,0 +1,21 @@
+Origin: Big Pickle Repo
+Label: Big Pickle Repo
+Suite: stable
+Version: 1.0
+Codename: stable
+Architectures: iphoneos-arm64
+Components: main
+Description: Hidden Folder tweak for Dopamine (iOS 15-16, rootless)
+Date: Sat, 19 Sep 2026 20:16:59 +0530
+MD5Sum:
+ be7ca0dacda7f8dc1daaddababed2994 545 Packages
+ 89ad713e8cea830f99e52922aebbfa30 404 Packages.gz
+ 4268c84b59c4ac778126dee8fd8d4a63 432 Packages.bz2
+SHA1:
+ 8ef22d603aff41d944fd5ccceb3c8401281c5908 545 Packages
+ 88180a34c6d53903db99281283f66149533809bc 404 Packages.gz
+ 01e605044fcaeda98f50bf9eaf3b5beff86e0737 432 Packages.bz2
+SHA256:
+ 0c27befd97e6a723c86dfb60d55410119c3f6bff7b4fd8d3ffd8ef95c98d5cbd 545 Packages
+ 9faaf2a9f6b4d85afd8c883c4eb1acdb3bf85f0448908942d5fa187d49d8ef62 404 Packages.gz
+ c6e54bbc59799fa70333e7597d6b9d125bded57d9ccce9c1614c2a2d92da1589 432 Packages.bz2
