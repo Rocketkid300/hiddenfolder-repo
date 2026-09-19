@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hidden Folder — Sileo Repo</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 640px; margin: 0 auto; padding: 2rem 1.25rem 4rem;
+    line-height: 1.6; background: #fafafa; color: #1c1c1e;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #101014; color: #f2f2f7; }
+    .card { background: #1c1c22; border-color: #33333a; }
+    code { background: #26262c; color: #8ee6a8; }
+  }
+  h1 { font-size: 1.7rem; margin-bottom: .25rem; }
+  .pill {
+    display: inline-block; background: #34a853; color: #fff; font-size: .8rem;
+    padding: .15rem .6rem; border-radius: 999px; margin-bottom: 1rem;
+  }
+  .card { background: #fff; border: 1px solid #e5e5ea; border-radius: 14px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+  code { background: #f0f0f2; padding: .15rem .45rem; border-radius: 6px; font-size: .92em; word-break: break-all; }
+  a { color: #1a73e8; }
+  .btn {
+    display: inline-block; background: #1a73e8; color: #fff; text-decoration: none;
+    padding: .6rem 1.1rem; border-radius: 10px; font-weight: 600; margin-top: .4rem;
+  }
+  ol { padding-left: 1.25rem; }
+</style>
+</head>
+<body>
+  <h1>🔒 Hidden Folder</h1>
+  <span class="pill">✓ Repo is live</span>
+  <p>A passcode-protected <strong>"Hidden"</strong> folder at the end of the App Library for <strong>Dopamine</strong> (rootless, iOS 15–16). Turn on Hide Mode and tap any Home Screen app once to hide it.</p>
+
+  <div class="card">
+    <h2>📲 Install in Sileo</h2>
+    <ol>
+      <li>Open <strong>Sileo → Sources → ⨁</strong></li>
+      <li>Add this repo URL:
+        <code>https://rocketkid300.github.io/hiddenfolder-repo/</code>
+      </li>
+      <li>It's <strong>unsigned</strong> — tap <em>Add Anyway</em> when warned</li>
+      <li>Install <strong>Hidden Folder</strong> (it will respring)</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>⚙️ First-time setup</h2>
+    <ol>
+      <li>Open <strong>Settings → Hidden Folder</strong></li>
+      <li>Set a passcode (4–8 digits)</li>
+      <li>Turn on <strong>Enable</strong> + <strong>Hide Mode</strong></li>
+      <li>App Library → tap the 🔒 <strong>Hidden</strong> pod → enter your code</li>
+      <li><strong>Hide:</strong> tap any Home Screen icon once (while Hide Mode is on)</li>
+      <li><strong>Unhide:</strong> long-press an app inside the Hidden folder</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>📦 Package</h2>
+    <p>
+      Current version <strong>1.0.0</strong> &nbsp;·&nbsp; Architecture <code>iphoneos-arm64</code> &nbsp;·&nbsp; iOS ≥ 15.0<br>
+      Requires <code>mobilesubstrate</code>, <code>preferenceloader</code> &amp; <code>oldabi</code> (auto-installed; ElleKit repo <code>ellekit.space</code> may be needed for <code>oldabi</code>).
+    </p>
+    <a class="btn" href="debs/com.bigpickle.hiddenfolder_1.0.0_iphoneos-arm64.deb">⬇ Download the .deb</a>
+  </div>
+
+  <p style="opacity:.65; font-size:.85rem">Big Pickle · <a href="Packages">Packages</a> · <a href="Release">Release</a></p>
+</body>
+</html>

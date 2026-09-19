@@ -16,23 +16,35 @@ USER="$(gh api user -q .login)"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-cp -r "$REPO_SRC"/. "$TMP"/
+if gh repo view "$USER/$TARGET" >/dev/null 2>&1; then
+  # Update: clone the live repo, overlay new content, commit, push.
+  echo ">> Repo $USER/$TARGET exists — updating…"
+  gh repo clone "$USER/$TARGET" "$TMP" >/dev/null
+  rsync -a --delete --exclude .git "$REPO_SRC/./" "$TMP/"
+  cd "$TMP"
+  git add -A
+  git -c user.email="sileo@github" -c user.name="sileo-repo" \
+      commit -qm "Sileo repo update $(date -u +%F)" || true
+  git push
+else
+  # First publish: create the repo from a fresh copy of repo/ contents.
+  cp -r "$REPO_SRC"/. "$TMP"/
+  cd "$TMP"
+  git init -q
+  git add -A
+  git -c user.email="sileo@github" -c user.name="sileo-repo" \
+      commit -qm "Sileo repo initial publish $(date -u +%F)"
+  gh repo create "$TARGET" --public \
+    --description "Hidden Folder tweak for Dopamine (rootless) — Sileo repo" \
+    --source "$TMP" --remote origin --push
+fi
 
-cd "$TMP"
-git init -q
-git add -A
-git -c user.email="sileo@github" -c user.name="sileo-repo" commit -qm "Sileo repo update $(date -u +%F)"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-# Create the public repo and push the Pages content as its root.
-gh repo create "$TARGET" --public \
-  --description "Hidden Folder tweak for Dopamine (rootless) — Sileo repo" \
-  --source "$TMP" --remote origin --push
-
-# Enable GitHub Pages on the default branch.
-BRANCH="$(git -C "$TMP" rev-parse --abbrev-ref HEAD)"
+# Ensure GitHub Pages serves from the default branch root.
 if ! gh api "repos/$USER/$TARGET/pages" -X POST \
      -f "source[branch]=$BRANCH" -f "source[path]=/"; then
-  echo ">> Pages may already be enabled or was just created (takes ~1 min the first time)."
+  echo ">> Pages is already configured (first build takes ~1 min)."
 fi
 
 echo
@@ -40,5 +52,5 @@ echo "=============================================================="
 echo "  Your Sileo repo URL (add this in Sileo → Sources → +):"
 echo "    https://$USER.github.io/$TARGET/"
 echo "=============================================================="
-echo "  First update can take ~1 minute to appear on GitHub Pages."
+echo "  Updates take ~1 minute to appear on GitHub Pages."
 echo "  Rebuild + re-publish after changes:  ./repo/build.sh && ./repo/publish-github.sh"
