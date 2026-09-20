@@ -53,6 +53,18 @@ MD5sum: e31522ab4b51c631f90c6065ab1fe401
 SHA1: a72f16ff4c37de78c3d797f9155ebcc191b469da
 SHA256: b2f9ce49833d4482d948d6b552599681b91c4c3da44f53a38902dfe6bdf8ff2e
 
+Package: com.bigpickle.hiddenvault
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: Big Pickle <bigpickle@example.com>
+Section: Apps
+Description: A standalone passcode-locked app vault for Dopamine (rootless, iOS 15-16). Set a 4-digit passcode, add apps to the vault, and open them from the passcode-gated list. Think of it as a locked folder icon on your Home Screen - everything inside appears only after you enter the code. Pure app: no substrate, no dependencies, nothing to respring.
+Filename: debs/com.bigpickle.hiddenvault_1.0.0_iphoneos-arm64.deb
+Size: 73202
+MD5sum: 4a5700bd9ae013907a766464c77d26fb
+SHA1: ed69660ddca6fcba7e5604c2fb75ef7f353f0d56
+SHA256: 0f93cad8f415c3ad050829f36ed0831999d41ff05baa93e60859817a144b4af4
+
 Package: cy+cpu.arm64e
 Version: 1.0
 Architecture: iphoneos-arm64

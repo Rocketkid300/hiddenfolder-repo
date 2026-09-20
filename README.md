@@ -20,6 +20,21 @@ https://rocketkid300.github.io/hiddenfolder-repo/
 
 **Sileo → Sources → ⨁ → Add Source** → paste the URL above → **Add Anyway** on the unsigned warning → install **Hidden Folder**.
 
+## 📱 Hidden Vault — the standalone app (easy path)
+
+If tweaks are giving you trouble, skip them entirely:
+
+1. In Sileo install **Hidden Vault** (`com.bigpickle.hiddenvault`, 1.0.0).
+2. Its icon appears on your Home Screen (respring once if not immediate).
+3. Open it → **⚙️ Set Passcode** → **➕ Add Apps** → done.
+
+Everything you add opens only through the passcode-gated vault, and the vault
+re-locks itself whenever it loses focus. It's a pure app — `Depends: firmware (>= 15.0)`
+only. No substrate, no ellekit, no oldabi.
+
+The tweak version (passcode pod at the end of the App Library) shares the same
+passcode + hidden list, so you can use both together.
+
 ## Using the tweak (no Settings page needed)
 
 Everything lives inside the folder itself:
