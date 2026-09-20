@@ -313,53 +313,11 @@ Author: Big Pickle <bigpickle@example.com>
 Section: Apps
 Depends: firmware (>= 15.0)
 Architecture: iphoneos-arm64
-Version: 2.1+calculator
-Installed-Size: 260
-Filename: debs/com.bigpickle.hiddenvault_2.1+calculator_iphoneos-arm64.deb
-Size: 55326
-MD5sum: f479538866a370598074b337d3fe4dba
-
-Package: com.bigpickle.hiddenvault
-Name: Hidden Vault
-Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
-Maintainer: Big Pickle <bigpickle@example.com>
-Author: Big Pickle <bigpickle@example.com>
-Section: Apps
-Depends: firmware (>= 15.0)
-Architecture: iphoneos-arm64
-Version: 2.1+fitness
-Installed-Size: 268
-Filename: debs/com.bigpickle.hiddenvault_2.1+fitness_iphoneos-arm64.deb
-Size: 66710
-MD5sum: 159c26245027edf5cfbd2fedcc7f4f11
-
-Package: com.bigpickle.hiddenvault
-Name: Hidden Vault
-Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
-Maintainer: Big Pickle <bigpickle@example.com>
-Author: Big Pickle <bigpickle@example.com>
-Section: Apps
-Depends: firmware (>= 15.0)
-Architecture: iphoneos-arm64
 Version: 2.1
 Installed-Size: 332
 Filename: debs/com.bigpickle.hiddenvault_2.1_iphoneos-arm64.deb
 Size: 105716
 MD5sum: e0cb51e61bf8f2c336167c504e7f43f8
-
-Package: com.bigpickle.hiddenvault
-Name: Hidden Vault
-Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
-Maintainer: Big Pickle <bigpickle@example.com>
-Author: Big Pickle <bigpickle@example.com>
-Section: Apps
-Depends: firmware (>= 15.0)
-Architecture: iphoneos-arm64
-Version: 2.1+notes
-Installed-Size: 260
-Filename: debs/com.bigpickle.hiddenvault_2.1+notes_iphoneos-arm64.deb
-Size: 54330
-MD5sum: 455625bdc4a9671c0656736a00263c74
 
 Package: cy+cpu.arm64e
 Version: 1.0
