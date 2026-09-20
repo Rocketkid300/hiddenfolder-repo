@@ -1,10 +1,31 @@
 # Hidden Folder — Changelog
 
-All notable changes to the **Hidden Folder** tweak (com.bigpickle.hiddenfolder).
+All notable changes to the **Hidden Folder** tweak (`com.bigpickle.hiddenfolder`)
+and the **Hidden Vault** app (`com.bigpickle.hiddenvault`).
 
 Format follows [Keep a Changelog](https://keepachangelog.com/) conventions. Versions are semver.
 
 ---
+
+# Hidden Vault (app) — `com.bigpickle.hiddenvault`
+
+## [1.2.0] — 2026-09-20
+
+### Added
+- **Apple-style unlock**: unlock the vault with **Face ID / Touch ID — or Apple's own passcode dialog** (LocalAuthentication), exactly like a system app. The 4-digit pad stays as a fallback.
+- **App Library pod look**: the vault now sits in the App Library as a **normal app pod** — a dark locked-folder icon (iOS-18-style rounded card) labeled **"Hidden"**, just like the "Suggested / Recently Added" cards at the top of the Library.
+
+### Changed
+- Display name `Hidden Vault` → **`Hidden`**.
+
+## [1.0.1] — 2026-09-20
+
+### Added
+- Initial release: 4-digit passcode (salted hash), app picker, open apps from the passcode-gated list, swipe-to-remove from vault. Rootless, `Depends: firmware (>= 15.0)` only.
+
+---
+
+# Hidden Folder (tweak) — `com.bigpickle.hiddenfolder`
 
 ## [1.4.0] — 2026-09-20
 
