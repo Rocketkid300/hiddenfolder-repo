@@ -20,6 +20,28 @@ Filename: debs/com.bigpickle.hiddenfolder_2.0.6_iphoneos-arm64.deb
 Size: 17828
 MD5sum: 843350dbf8078ddb53c939871488a155
 
+Package: com.bigpickle.hiddenfolder
+Name: Hidden Folder
+Description: Hidden Folder 2.0 — full rewrite. Long-press any Home Screen app and pick "Add to Hidden Folder" to hide it for real (vanishes from Home Screen, App Library and Spotlight). A green banner on respring proves the tweak loaded.
+ .
+ Changelog:
+ 1.4.0 - Removed the oldabi dependency; arm64e slice is now new ABI via Allemande, so it loads on A12+ without oldabi, like any standard repo tweak.
+ 1.3.0 - Added a respring banner ("Hidden Folder active") for instant proof the tweak loaded.
+ 1.2.0 - Rewrote the App Library pod placement (no fragile internal class-name guessing) with retries; added detailed logs.
+ 1.1.0 - All settings moved inside the folder (gear menu); the Settings app page was removed entirely.
+ 1.0.0 - Initial release: App Library pod, 4-digit passcode, Hide Mode.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 2.0.7
+Installed-Size: 188
+Filename: debs/com.bigpickle.hiddenfolder_2.0.7_iphoneos-arm64.deb
+Size: 22494
+MD5sum: 76dd3a000df0911676d31ab0f1c6bfa2
+
 Package: com.bigpickle.hiddenvault
 Name: Hidden Vault
 Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
@@ -33,4 +55,18 @@ Installed-Size: 696
 Filename: debs/com.bigpickle.hiddenvault_2.2.1_iphoneos-arm64.deb
 Size: 446536
 MD5sum: c1adaa1123b8ae7e7b8b1b41c0679d56
+
+Package: com.bigpickle.hiddenvault
+Name: Hidden Vault
+Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Apps
+Depends: firmware (>= 15.0)
+Architecture: iphoneos-arm64
+Version: 2.3
+Installed-Size: 728
+Filename: debs/com.bigpickle.hiddenvault_2.3_iphoneos-arm64.deb
+Size: 466332
+MD5sum: 1fb93afc7ec340491249af815a9ff3c4
 
