@@ -51,3 +51,23 @@ for v in 1.1.0 1.2.0 1.3.0 1.4.0 1.6.0; do
 done
 echo "=== 1.6.0 deb block preview ==="
 grep -A7 "Package: com.bigpickle.hiddenfolder" "$OUT" | grep -E 'Package:|Version:|Filename:|Size:|MD5sum:' | head -20
+
+# --- Release (Sileo requires it; must match Packages bytes exactly) ---
+python3 - <<'PYEOF'
+import hashlib, datetime, os
+os.chdir(os.path.dirname(os.path.abspath("Packages")) if os.path.exists("Packages") else ".")
+files = [f for f in ('Packages', 'Packages.gz') if os.path.exists(f)]
+date = datetime.datetime.now(datetime.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S UTC')
+lines = ['Origin: HiddenFolder', 'Label: HiddenFolder', 'Suite: stable',
+         'Codename: ios', 'Architectures: iphoneos-arm64', 'Components: main',
+         'Description: Hidden Folder tweak + Hidden Vault app for Dopamine (rootless)',
+         'Date: ' + date]
+for algo in ('MD5Sum', 'SHA256'):
+    lines.append(algo + ':')
+    for f in files:
+        data = open(f, 'rb').read()
+        h = hashlib.new('md5' if algo == 'MD5Sum' else 'sha256', data).hexdigest()
+        lines.append(' %s %16d %s' % (h, len(data), f))
+open('Release', 'w').write('\n'.join(lines) + '\n')
+print('Release regenerated too')
+PYEOF
