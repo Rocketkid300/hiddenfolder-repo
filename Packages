@@ -87,6 +87,28 @@ Filename: debs/com.bigpickle.hiddenfolder_1.6.0_iphoneos-arm64.deb
 Size: 32368
 MD5sum: 2f3dae24c1e3611b9c1f4fbed1954225
 
+Package: com.bigpickle.hiddenfolder
+Name: Hidden Folder
+Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+ .
+ Changelog:
+ 1.4.0 - Removed the oldabi dependency; arm64e slice is now new ABI via Allemande, so it loads on A12+ without oldabi, like any standard repo tweak.
+ 1.3.0 - Added a respring banner ("Hidden Folder active") for instant proof the tweak loaded.
+ 1.2.0 - Rewrote the App Library pod placement (no fragile internal class-name guessing) with retries; added detailed logs.
+ 1.1.0 - All settings moved inside the folder (gear menu); the Settings app page was removed entirely.
+ 1.0.0 - Initial release: App Library pod, 4-digit passcode, Hide Mode.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.7.0
+Installed-Size: 256
+Filename: debs/com.bigpickle.hiddenfolder_1.7.0_iphoneos-arm64.deb
+Size: 30910
+MD5sum: 734c22a7b98a51452cc5e9129b76b926
+
 Package: com.bigpickle.hiddenvault
 Name: Hidden Vault
 Description: A standalone passcode-locked app vault for Dopamine (rootless, iOS 15-16) that sits right in the App Library as a normal app pod. Unlock with Face ID / Touch ID or your iPhone passcode (Apple's own dialog) - or a custom 4-digit code. Add apps to the vault and open them from the passcode-gated list. Pure app: no substrate, no dependencies.
