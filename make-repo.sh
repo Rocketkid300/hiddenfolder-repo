@@ -65,8 +65,10 @@ bzip2 -c Packages > Packages.bz2
 
 # Optional: sign the Release (set REPO_GPG_KEY=<key id> to enable).
 if [[ -n "${REPO_GPG_KEY:-}" ]] && command -v gpg >/dev/null 2>&1; then
-  gpg --default-key "$REPO_GPG_KEY" --clearsign -o Release.gpg Release
-  gpg --default-key "$REPO_GPG_KEY" -abs -o InRelease Release
+  gpg --batch --yes --pinentry-mode loopback --default-key "$REPO_GPG_KEY" \
+      --clearsign --output InRelease Release
+  gpg --batch --yes --pinentry-mode loopback --default-key "$REPO_GPG_KEY" \
+      --detach-sign --armor --output Release.gpg Release
   echo ">> Signed Release with key $REPO_GPG_KEY"
 else
   echo ">> Unsigned repo (fine for Sileo; it shows a one-time warning)."

@@ -9,6 +9,10 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 REPO_SRC="$ROOT/repo"
 TARGET="${1:-hiddenfolder-repo}"
 
+# Always rebuild Packages/Release + GPG signatures from disk before push.
+# Publishing without this is how Sileo got a stale/unsigned Release.
+bash "$ROOT/repo/gen-index.sh"
+
 command -v gh >/dev/null 2>&1 || { echo "!! Install gh (https://cli.github.com) first." >&2; exit 1; }
 gh auth status >/dev/null 2>&1 || { echo "!! Run 'gh auth login' first." >&2; exit 1; }
 USER="$(gh api user -q .login)"

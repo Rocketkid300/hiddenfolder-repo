@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# gen-index.sh — regenerate Packages + Packages.gz for this repo from the debs
-# actually on disk, using dpkg-deb -f (deterministic, no Perl, no scanpackages).
-set -uo pipefail
+# gen-index.sh — regenerate Packages + Packages.gz + Release, then GPG-sign
+# Release.gpg + InRelease, from the debs actually in repo/debs/.
+# variants/ is never scanned. Filenames with '+' (disguise builds) are skipped
+# even if they leak into debs/, so the Sileo index cannot grow duplicates.
+set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 REPO="$ROOT/repo"
 DEBS_DIR="$REPO/debs"
 DPKG_DEB="$ROOT/tools/dpkg-root/usr/bin/dpkg-deb"
+GPG_KEY="${REPO_GPG_KEY:-5A92B2C181ED1D23}"
 
 [ -x "$DPKG_DEB" ] || DPKG_DEB="$(command -v dpkg-deb || true)"
 if [ -z "$DPKG_DEB" ]; then
@@ -21,13 +24,18 @@ OUT="$REPO/Packages"
 for deb in "$DEBS_DIR"/*.deb; do
   [ -f "$deb" ] || continue
 
-  # Field order per Sileo/Cydia: metadata first (dpkg-deb -f prints the whole control),
-  # then Filename/Size/MD5sum appended. Parse only what we MUST reorder; pass through
-  # everything else verbatim.
+  base="$(basename "$deb")"
+  # Disguise variants are versioned like 2.2.1+calculator — never index them.
+  case "$base" in
+    *+*)
+      echo "!! refusing to index variant leaked into debs/: $base" >&2
+      continue
+      ;;
+  esac
+
   full="$( "$DPKG_DEB" -f "$deb" 2>/dev/null )" || { echo "!! cannot read control of $deb" >&2; continue; }
   [ -n "$full" ] || continue
 
-  base="$(basename "$deb")"
   size="$(stat -c%s "$deb" 2>/dev/null || stat -f%z "$deb" 2>/dev/null || echo 0)"
   md5="$(md5sum "$deb" 2>/dev/null | awk '{print $1}')"
 
@@ -39,24 +47,27 @@ for deb in "$DEBS_DIR"/*.deb; do
   } >> "$OUT"
 done
 
-gzip -9fk "$OUT" 2>/dev/null || true
+# -n: no name/timestamp in the gzip header, so Packages.gz hashes stay
+# stable unless Packages itself changed (avoids false "stale Release" diffs).
+gzip -9nfk "$OUT"
 
 echo "=== regenerated from reality ==="
 echo "Packages   -> $(wc -c < "$OUT") bytes"
-echo "Packages.gz -> $(wc -c < "$OUT.gz" 2>/dev/null || echo '?') bytes"
-echo "=== debs indexed: $(grep -c '^Package:' "$OUT") ==="
-for v in 1.1.0 1.2.0 1.3.0 1.4.0 1.6.0; do
-  line=$(grep -A1 "^Package: com.bigpickle.hiddenfolder$" "$OUT" | grep -m1 "^Version: $v\$" >/dev/null 2>&1 && echo "in index" || echo "ABSENT")
-  echo "  $v -> $line"
-done
-echo "=== 1.6.0 deb block preview ==="
-grep -A7 "Package: com.bigpickle.hiddenfolder" "$OUT" | grep -E 'Package:|Version:|Filename:|Size:|MD5sum:' | head -20
+echo "Packages.gz -> $(wc -c < "$OUT.gz") bytes"
+echo "=== debs indexed: $(grep -c '^Package:' "$OUT" || true) ==="
+awk '
+  /^Package:/ { pkg=$2 }
+  /^Version:/ { ver=$2 }
+  /^Filename:/ { print "  " pkg " " ver " -> " $2 }
+' "$OUT"
 
-# --- Release (Sileo requires it; must match Packages bytes exactly) ---
+# --- Release (Sileo requires it; hashes must match Packages bytes exactly) ---
 python3 - <<'PYEOF'
 import hashlib, datetime, os
-os.chdir(os.path.dirname(os.path.abspath("Packages")) if os.path.exists("Packages") else ".")
+os.chdir(os.path.dirname(os.path.abspath("Packages")))
 files = [f for f in ('Packages', 'Packages.gz') if os.path.exists(f)]
+if not files:
+    raise SystemExit('!! Packages missing; cannot write Release')
 date = datetime.datetime.now(datetime.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S UTC')
 lines = ['Origin: HiddenFolder', 'Label: HiddenFolder', 'Suite: stable',
          'Codename: ios', 'Architectures: iphoneos-arm64', 'Components: main',
@@ -71,3 +82,18 @@ for algo in ('MD5Sum', 'SHA256'):
 open('Release', 'w').write('\n'.join(lines) + '\n')
 print('Release regenerated too')
 PYEOF
+
+# --- GPG: InRelease = clearsigned Release; Release.gpg = detached signature ---
+# Key is unencrypted (%no-protection). batch + loopback so this never prompts.
+if ! command -v gpg >/dev/null 2>&1; then
+  echo "!! gpg not found; unsigned Release would be a Sileo hard-block" >&2
+  exit 1
+fi
+rm -f InRelease Release.gpg
+gpg --batch --yes --pinentry-mode loopback --default-key "$GPG_KEY" \
+    --clearsign --output InRelease Release
+gpg --batch --yes --pinentry-mode loopback --default-key "$GPG_KEY" \
+    --detach-sign --armor --output Release.gpg Release
+echo "=== signed with $GPG_KEY ==="
+gpg --batch --verify Release.gpg Release
+gpg --batch --verify InRelease
