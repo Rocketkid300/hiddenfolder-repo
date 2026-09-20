@@ -1,0 +1,14 @@
+Origin: HiddenFolder
+Label: HiddenFolder
+Suite: stable
+Codename: ios
+Architectures: iphoneos-arm64
+Components: main
+Description: Hidden Folder tweak + Hidden Vault app for Dopamine (rootless)
+Date: Sun, 20 Sep 2026 10:52:43 UTC
+MD5Sum:
+ 0c8d16f1ae95ac549320509b4c2a5af8            18741 Packages
+ b4bc4bcc3a11864f152389a553cef5fe             2169 Packages.gz
+SHA256:
+ 72eea6786aaf5deba77d768cb78481d08270e7d242dab658283542dcec6335af            18741 Packages
+ 8b8ae131bfd7964d8ffc918e9c6d26ed8871785e03413150bc378a3983fea7e7             2169 Packages.gz
