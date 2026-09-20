@@ -31,8 +31,11 @@ Everything lives inside the folder itself:
 5. **Unhide:** long-press an app inside the Hidden folder.
 6. **Change/remove passcode, lock, or how-it-works:** ⚙️ gear inside the folder.
 
-Dependencies: `mobilesubstrate` (ElleKit on Dopamine) and `oldabi` (arm64e devices;
-if Sileo asks to add **ellekit.space** to resolve it, accept — it's the standard Dopamine repo).
+Dependencies: only `mobilesubstrate` (ElleKit on Dopamine). Since v1.4.0 the arm64e
+slice is built as **new ABI** (via Allemande), so it loads on A12+ exactly like any
+standard repo tweak — **no `oldabi`, no `ellekit.space`, no extra repos needed.**
+
+Full history: [CHANGELOG.md](CHANGELOG.md) · Try it first on your PC: [demo.html](demo.html)
 
 ## Local building / hosting (optional)
 
