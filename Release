@@ -6,16 +6,16 @@ Codename: stable
 Architectures: iphoneos-arm64
 Components: main
 Description: Hidden Folder tweak for Dopamine (iOS 15-16, rootless)
-Date: Sun, 20 Sep 2026 09:11:37 +0530
+Date: Sun, 20 Sep 2026 09:15:53 +0530
 MD5Sum:
- 52671987799660862f83d343c7ffe6ca 2601 Packages
- 605bfef8e3e8116da3f34b4fe80f2078 994 Packages.gz
- 910039e8d6f1f845cd4668485771039b 1153 Packages.bz2
+ e913525fb9b5a847424f6804e3f0fba7 3172 Packages
+ fe0796d2717f5d91225cbc4e818d1c1d 1100 Packages.gz
+ 72feaa83bee30870e21b77b1dab44ca6 1257 Packages.bz2
 SHA1:
- 0fbace9af0e47a7826d3292ba1480fbcdac90da0 2601 Packages
- b54040711455abfafbde9a2dfb5d3bd969acee21 994 Packages.gz
- cf33540a0a5664e7a8edc5ae23d20c5c08b5105d 1153 Packages.bz2
+ 33bd68eea3abcf40a43321a2f2e0c723ce411ff3 3172 Packages
+ b77737fdf2f4cc461bd9cb7282e202a3c6c8e3fc 1100 Packages.gz
+ 3cecfeb4550ccd742d4123b7303582a8a7d2e0ad 1257 Packages.bz2
 SHA256:
- aedeb253c91d13362e5d0b0df6797f9d0bf1bafdff4824d8b7354daee78d1f91 2601 Packages
- 4810073fcac5729af48aeb95082650ef50cb2510927509f33309f43a3c7c0709 994 Packages.gz
- 50fe8c36826443f6be24714404df95117fc01f03db24edd4399881011117d09f 1153 Packages.bz2
+ a3337c30929e6e46465eac8eec25e7a8b8af96dd2a96b2f91aa0040698ac774d 3172 Packages
+ 36178af5db48e880ba59da0137a8c035f86f52fca6cd7cce35f27421d223665c 1100 Packages.gz
+ bc8a33874491cab0ff2c1c60eae08c3cb19ecdee97f034f4877c1c762a92289e 1257 Packages.bz2

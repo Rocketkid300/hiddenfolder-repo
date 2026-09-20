@@ -34,6 +34,18 @@ MD5sum: d884132a45052315c8a965f6cb5abb16
 SHA1: eca3c29333e726cb0a70d4fe17671f93d7bef5c9
 SHA256: 94081b87f52beebdbb8ed193d1f283cd5ebddc61b876909f58b7baaca89ea9f1
 
+Package: com.bigpickle.hiddenfolder
+Version: 1.4.0
+Architecture: iphoneos-arm64
+Maintainer: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+Filename: debs/com.bigpickle.hiddenfolder_1.4.0_iphoneos-arm64.deb
+Size: 55120
+MD5sum: 2eff812fdc19a06e931a82426f12bb84
+SHA1: 99fb72dd53d1b598df00e07fc94110213a08d60f
+SHA256: 98f32b9d9e818cab06e3877bd550ac741fc40ecbb7fa5ab764556793e60b947d
+
 Package: cy+cpu.arm64e
 Version: 1.0
 Architecture: iphoneos-arm64
