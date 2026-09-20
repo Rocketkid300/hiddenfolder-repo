@@ -1,44 +1,50 @@
 Package: com.bigpickle.hiddenfolder
-Version: 1.1.0
-Architecture: iphoneos-arm64
-Maintainer: Big Pickle <bigpickle@example.com>
-Section: Tweaks
+Name: Hidden Folder
 Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), oldabi
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.1.0
+Installed-Size: 256
 Filename: debs/com.bigpickle.hiddenfolder_1.1.0_iphoneos-arm64.deb
 Size: 30170
 MD5sum: 0242603548987ea79a544302310c75b4
-SHA1: a387c63d31c7119ce9bf632fc00e78b9e42b0789
-SHA256: 36e8d642a435a4e4800f56c175bf7b3181bb41db98bd0dee37c170f97aba5d2b
 
 Package: com.bigpickle.hiddenfolder
-Version: 1.2.0
-Architecture: iphoneos-arm64
-Maintainer: Big Pickle <bigpickle@example.com>
-Section: Tweaks
+Name: Hidden Folder
 Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), oldabi
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.2.0
+Installed-Size: 256
 Filename: debs/com.bigpickle.hiddenfolder_1.2.0_iphoneos-arm64.deb
 Size: 30900
 MD5sum: 9008e620df62910c41782cef9301d6b9
-SHA1: a355bc3b1851e484d177e54a220362c0b6e41537
-SHA256: 0f100eeb39ce34b34ec05498bb0f8bea5fd4c63e818c3bde9e1a5cbc0ae860b9
 
 Package: com.bigpickle.hiddenfolder
-Version: 1.3.0
-Architecture: iphoneos-arm64
-Maintainer: Big Pickle <bigpickle@example.com>
-Section: Tweaks
+Name: Hidden Folder
 Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000), oldabi
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.3.0
+Installed-Size: 256
 Filename: debs/com.bigpickle.hiddenfolder_1.3.0_iphoneos-arm64.deb
 Size: 31050
 MD5sum: d884132a45052315c8a965f6cb5abb16
-SHA1: eca3c29333e726cb0a70d4fe17671f93d7bef5c9
-SHA256: 94081b87f52beebdbb8ed193d1f283cd5ebddc61b876909f58b7baaca89ea9f1
 
 Package: com.bigpickle.hiddenfolder
-Version: 1.4.0
-Architecture: iphoneos-arm64
-Maintainer: Big Pickle <bigpickle@example.com>
-Section: Tweaks
+Name: Hidden Folder
 Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
  .
  Changelog:
@@ -47,45 +53,74 @@ Description: A passcode-protected "Hidden" folder at the end of the App Library.
  1.2.0 - Rewrote the App Library pod placement (no fragile internal class-name guessing) with retries; added detailed logs.
  1.1.0 - All settings moved inside the folder (gear menu); the Settings app page was removed entirely.
  1.0.0 - Initial release: App Library pod, 4-digit passcode, Hide Mode.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.4.0
+Installed-Size: 256
 Filename: debs/com.bigpickle.hiddenfolder_1.4.0_iphoneos-arm64.deb
 Size: 55406
 MD5sum: e31522ab4b51c631f90c6065ab1fe401
-SHA1: a72f16ff4c37de78c3d797f9155ebcc191b469da
-SHA256: b2f9ce49833d4482d948d6b552599681b91c4c3da44f53a38902dfe6bdf8ff2e
+
+Package: com.bigpickle.hiddenfolder
+Name: Hidden Folder
+Description: A passcode-protected "Hidden" folder at the end of the App Library. Turn on Hide Mode and tap any Home Screen app once to hide it. All settings live inside the folder (⚙).
+ .
+ Changelog:
+ 1.4.0 - Removed the oldabi dependency; arm64e slice is now new ABI via Allemande, so it loads on A12+ without oldabi, like any standard repo tweak.
+ 1.3.0 - Added a respring banner ("Hidden Folder active") for instant proof the tweak loaded.
+ 1.2.0 - Rewrote the App Library pod placement (no fragile internal class-name guessing) with retries; added detailed logs.
+ 1.1.0 - All settings moved inside the folder (gear menu); the Settings app page was removed entirely.
+ 1.0.0 - Initial release: App Library pod, 4-digit passcode, Hide Mode.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 1.6.0
+Installed-Size: 256
+Filename: debs/com.bigpickle.hiddenfolder_1.6.0_iphoneos-arm64.deb
+Size: 32368
+MD5sum: 2f3dae24c1e3611b9c1f4fbed1954225
 
 Package: com.bigpickle.hiddenvault
-Version: 1.2.0
-Architecture: iphoneos-arm64
-Maintainer: Big Pickle <bigpickle@example.com>
-Section: Apps
+Name: Hidden Vault
 Description: A standalone passcode-locked app vault for Dopamine (rootless, iOS 15-16) that sits right in the App Library as a normal app pod. Unlock with Face ID / Touch ID or your iPhone passcode (Apple's own dialog) - or a custom 4-digit code. Add apps to the vault and open them from the passcode-gated list. Pure app: no substrate, no dependencies.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Apps
+Depends: firmware (>= 15.0)
+Architecture: iphoneos-arm64
+Version: 1.2.0
+Installed-Size: 288
 Filename: debs/com.bigpickle.hiddenvault_1.2.0_iphoneos-arm64.deb
 Size: 87418
 MD5sum: 88fd78f8f880c92e8ad5b8d8ac407f48
-SHA1: db7d2da58f32de289d8872f71d0a71d3f770d1ac
-SHA256: 3c9e1d72e6c1ea75b05c3920fd5c05940d4e0a8207862b56ae26b7a2d024c503
 
 Package: cy+cpu.arm64e
 Version: 1.0
 Architecture: iphoneos-arm64
 Maintainer: Big Pickle <bigpickle@noreply.github.com>
 Section: System
+Priority: optional
 Description: CPU architecture marker for arm64e (A12+) devices on Dopamine rootless.
 Filename: debs/cy+cpu.arm64e_1.0_iphoneos-arm64.deb
 Size: 614
 MD5sum: 1a6bb83909f1276809b7692df7c54328
-SHA1: 6400da67a17ba14c9f1db7be65333b840cc0a242
-SHA256: c7ef4a925304383e5c04a17450dc6b6733b4bb2c131c94ce86108fcf8f3a2e91
 
 Package: oldabi
 Version: 0.2.3+bigpickle.1
 Architecture: iphoneos-arm64
 Maintainer: Big Pickle <bigpickle@noreply.github.com>
-Section: 
+Depends: ellekit (>= 0.4), firmware (>= 15.0)
 Description: Support for legacy arm64e ABI in iOS 15.0+ (self-hosted build)
+Name: Legacy arm64e Support
+Author: Evelyn
 Filename: debs/oldabi_0.2.3+bigpickle.1_iphoneos-arm64.deb
 Size: 9416
 MD5sum: 78791166c16015ef093f50642a347958
-SHA1: f048bb0fe4899f48ab9b7cefa5be1ca04d0fbe6d
-SHA256: 2e5ae2c8891617fa439f14a0cf3209debe316cef0456633a23f3fc7e3e12091c
 
