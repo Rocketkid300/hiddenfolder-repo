@@ -349,6 +349,20 @@ Author: Big Pickle <bigpickle@example.com>
 Section: Apps
 Depends: firmware (>= 15.0)
 Architecture: iphoneos-arm64
+Version: 2.2.1
+Installed-Size: 696
+Filename: debs/com.bigpickle.hiddenvault_2.2.1_iphoneos-arm64.deb
+Size: 446536
+MD5sum: c1adaa1123b8ae7e7b8b1b41c0679d56
+
+Package: com.bigpickle.hiddenvault
+Name: Hidden Vault
+Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
+Maintainer: Big Pickle <bigpickle@example.com>
+Author: Big Pickle <bigpickle@example.com>
+Section: Apps
+Depends: firmware (>= 15.0)
+Architecture: iphoneos-arm64
 Version: 2.2
 Installed-Size: 696
 Filename: debs/com.bigpickle.hiddenvault_2.2_iphoneos-arm64.deb
