@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hidden Folder — Interactive Demo (try it on your PC)</title>
+<style>
+  :root {
+    --bg: #0e0e12; --card: #1c1c23; --line: #2c2c36; --text: #f2f2f7;
+    --sub: #8e8e98; --blue: #0a84ff; --orange: #ff9f0a; --green: #34c759; --red: #ff453a;
+  }
+  * { box-sizing: border-box; -webkit-user-select: none; user-select: none; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    background: radial-gradient(1200px 600px at 50% -10%, #1c1c24, #0e0e12);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text); padding: 28px 12px 60px;
+  }
+  h1 { font-size: 22px; margin: 4px 0 2px; }
+  p.tag { color: var(--sub); font-size: 12.5px; margin: 0 0 18px; max-width: 520px; text-align: center; line-height: 1.45; }
+  #phone {
+    width: 340px; background: #000; border: 1px solid #2a2a32; border-radius: 44px;
+    padding: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  }
+  #screen { background: var(--bg); border-radius: 32px; overflow: hidden; position: relative; height: 680px; }
+  .screen-inner { position: absolute; inset: 0; }
+
+  /* top bars */
+  .statusbar { text-align: center; color: var(--sub); font-size: 10px; padding-top: 7px; }
+  .tabs { display: flex; margin: 8px 12px 0; background: var(--card); border-radius: 9px; overflow: hidden; }
+  .tab { flex: 1; text-align: center; padding: 7px 0; font-size: 12.5px; color: var(--sub); cursor: pointer; }
+  .tab.active { background: var(--blue); color: #fff; font-weight: 600; }
+
+  .row { display: flex; align-items: center; gap: 10px; margin: 10px 16px 0; }
+  .row label { font-size: 12.5px; color: var(--text); }
+  .row .hint { font-size: 11px; color: var(--sub); flex: 1; }
+  .switch { width: 44px; height: 26px; border-radius: 13px; background: #3a3a44; position: relative; cursor: pointer; transition: background .18s; flex: none; }
+  .switch.on { background: var(--green); }
+  .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 22px; height: 22px; border-radius: 50%; background: #fff; transition: transform .18s; }
+  .switch.on::after { transform: translateX(18px); }
+
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px 10px; margin: 16px 14px; }
+  .app { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; position: relative; }
+  .app .ic { width: 54px; height: 54px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 3px 8px rgba(0,0,0,.4); }
+  .app .nm { font-size: 10.5px; color: #d8d8de; text-align: center; max-width: 64px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .app.hidden-app { animation: pop .25s; }
+
+  /* hidden pod */
+  .pod { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
+  .pod .circle { width: 54px; height: 54px; border-radius: 13px; background: rgba(255,255,255,.16); display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .pod .nm { font-size: 10.5px; color: #d8d8de; }
+  .applib-strip { margin-top: 4px; padding: 10px 14px 14px; }
+
+  .empty { color: var(--sub); font-size: 12px; text-align: center; margin-top: 22px; }
+
+  /* modal & passcode */
+  #overlay { position: absolute; inset: 0; display: none; flex-direction: column; background: rgba(0,0,0,.55); }
+  #sheet {
+    position: absolute; left: 8px; right: 8px; bottom: 8px; background: rgba(28,28,35,.92);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4); backdrop-filter: blur(24px) saturate(1.4);
+    border-radius: 24px; padding: 18px 14px 22px; min-height: 300px;
+    box-shadow: 0 -10px 40px rgba(0,0,0,.4);
+  }
+  .grabber { width: 38px; height: 5px; border-radius: 3px; background: #55555f; margin: 0 auto 14px; }
+  .sh-title { text-align: center; font-size: 16px; font-weight: 700; }
+  .sh-sub { text-align: center; font-size: 11.5px; color: var(--sub); margin-top: 2px; }
+  .iconbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .sqbtn { width: 30px; height: 30px; border-radius: 8px; background: #2c2c36; display: flex; align-items: center; justify-content: center; font-size: 15px; cursor: pointer; }
+
+  #vaultGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px 8px; margin-top: 10px; min-height: 92px; }
+
+  .dots { display: flex; gap: 18px; justify-content: center; margin: 14px 0 16px; }
+  .dot { width: 13px; height: 13px; border-radius: 50%; background: #3a3a44; }
+  .dot.on { background: var(--blue); }
+  .pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; max-width: 232px; margin: 0 auto; }
+  .key { height: 54px; border-radius: 27px; background: #2c2c36; display: flex; align-items: center; justify-content: center; font-size: 19px; cursor: pointer; }
+  .key:hover { filter: brightness(1.2); }
+  .shake { animation: shake .3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+  @keyframes pop { 0%{transform:scale(.5); opacity:0} 100%{transform:scale(1); opacity:1} }
+
+  /* toasts */
+  #toast { position: absolute; left: 50%; top: 46%; transform: translate(-50%,-50%); background: rgba(0,0,0,.8); color: #fff; padding: 9px 18px; border-radius: 20px; font-size: 12.5px; opacity: 0; pointer-events: none; transition: opacity .18s; }
+  #toast.show { opacity: 1; }
+
+  .notice { max-width: 520px; margin-top: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; font-size: 12.5px; line-height: 1.55; color: #cfcfd8; }
+  .notice b { color: var(--text); }
+  a { color: var(--blue); }
+</style>
+</head>
+<body>
+  <h1>🔒 Hidden Folder</h1>
+  <p class="tag">Interactive demo of the tweak — same screens &amp; flow as on your iPhone, running here in your browser. Tap a Home Screen icon to hide it, open the Hidden pod, set a passcode, and try Hide Mode.</p>
+
+  <div id="phone">
+    <div id="screen">
+      <div class="screen-inner" id="screenInner">
+
+        <div class="statusbar">9:41 &nbsp;·&nbsp; <span id="lockState">device</span></div>
+
+        <div class="tabs">
+          <div class="tab active" id="tabHome" onclick="showTab('home')">Home Screen</div>
+          <div class="tab" id="tabLibrary" onclick="showTab('library')">App Library</div>
+        </div>
+
+        <!-- HOME -->
+        <div id="homeView">
+          <div class="row">
+            <label>Hide Mode</label>
+            <span class="hint">tap any icon once to hide it</span>
+            <div class="switch" id="hideSwitch" onclick="toggleHideMode()"></div>
+          </div>
+          <div class="grid" id="homeGrid"></div>
+          <div class="row" style="margin-top:2px"><span class="hint" id="homeStats"></span></div>
+        </div>
+
+        <!-- APP LIBRARY -->
+        <div id="libraryView" style="display:none">
+          <div class="grid" id="libGrid"></div>
+          <div class="applib-strip" style="border-top:1px solid var(--line)">
+            <div class="pod" onclick="openVault()" title="Open Hidden folder">
+              <div class="circle">🔒</div><div class="nm">Hidden</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VAULT MODAL -->
+      <div id="overlay">
+        <div id="sheet">
+          <div class="grabber"></div>
+          <div class="iconbar">
+            <div class="sqbtn" id="gearBtn" onclick="openGear()" title="Settings">⚙️</div>
+            <div class="sh-title">Hidden</div>
+            <div class="sqbtn" onclick="closeVault()" title="Close">✕</div>
+          </div>
+          <div class="sh-sub" id="sheetSub"></div>
+
+          <div id="vaultView">
+            <div class="row" style="margin:8px 0 2px">
+              <label>Hide Mode</label>
+              <div class="switch" id="vaultHideSwitch" onclick="toggleHideModeVault()"></div>
+            </div>
+            <div class="empty" id="vaultEmpty" style="display:none">No apps hidden yet.<br>Flip Hide Mode on your Home Screen, then tap an app.</div>
+            <div id="vaultGrid"></div>
+          </div>
+
+          <div id="lockView" style="display:none">
+            <div class="dots" id="dots"></div>
+            <div class="pad" id="pad"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="toast"></div>
+    </div>
+  </div>
+
+  <div class="notice">
+    <b>This is a demo of the interface only.</b> On your iPhone, the real tweak hooks into iOS: the pod is added to your real App Library, a tapped Home Screen icon genuinely moves into the folder, and launch goes through the system. That part can only run on a jailbroken iPhone — but this page lets you try every screen and flow first. <br><br>
+    Install instructions: <a href="/">repo homepage</a> · add <code>https://rocketkid300.github.io/hiddenfolder-repo/</code> in Sileo.
+  </div>
+
+<script>
+"use strict";
+/* ===== state (mirrors the real tweak's CFPreferences) ===== */
+const state = {
+  passcode: localStorage.getItem('hf_passcode') || '',   // '' = not set
+  hideMode: localStorage.getItem('hf_hideMode') === '1',
+  hidden: JSON.parse(localStorage.getItem('hf_hidden') || '[]'),
+};
+const save = () => {
+  localStorage.setItem('hf_passcode', state.passcode);
+  localStorage.setItem('hf_hideMode', state.hideMode ? '1' : '0');
+  localStorage.setItem('hf_hidden', JSON.stringify(state.hidden));
+};
+
+/* ===== fake app catalog ===== */
+const APPS = [
+  { id:'safari',   name:'Safari',   c:'#1d6bf0', e:'🧭' },
+  { id:'messages', name:'Messages', c:'#2fbf5f', e:'💬' },
+  { id:'photos',   name:'Photos',   c:'#f24d3d', e:'🌼' },
+  { id:'music',    name:'Music',    c:'#fa3c57', e:'🎵' },
+  { id:'mail',     name:'Mail',     c:'#3786fa', e:'✉️' },
+  { id:'maps',     name:'Maps',     c:'#44b37d', e:'🗺️' },
+  { id:'calendar', name:'Calendar', c:'#fff',    e:'📅' },
+  { id:'notes',    name:'Notes',    c:'#f7c530', e:'📝' },
+  { id:'settings', name:'Settings', c:'#8f8f97', e:'⚙️' },
+  { id:'camera',   name:'Camera',   c:'#5c5c66', e:'📷' },
+  { id:'weather',  name:'Weather',  c:'#3aa8f5', e:'⛅' },
+  { id:'appstore', name:'App Store',c:'#2f9bf5', e:'🛍️' },
+];
+const appById = id => APPS.find(a => a.id === id);
+const visibleApps = () => APPS.filter(a => !state.hidden.includes(a.id));
+
+/* ===== helpers ===== */
+const toast = msg => {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1400);
+};
+const appTile = a => `<div class="app" id="icon-${a.id}"
+  onclick="tapIcon('${a.id}')"
+  oncontextmenu="event.preventDefault();unhidePrompt('${a.id}')"
+  title="left-click: launch (or hide if Hide Mode on) · long-press/right-click: unhide">
+  <div class="ic" style="background:${a.c};color:#111">${a.e}</div><div class="nm">${a.name}</div>
+</div>`;
+
+function renderHome() {
+  document.getElementById('homeGrid').innerHTML = visibleApps().map(appTile).join('');
+  const on = state.hideMode;
+  document.getElementById('hideSwitch').classList.toggle('on', on);
+  document.getElementById('homeStats').textContent =
+    on ? 'Hide Mode ON — tapping an icon hides it'
+       : (state.hidden.length ? `${state.hidden.length} app(s) in the Hidden folder` : 'Hide Mode OFF — taps open apps');
+  document.getElementById('lockState').textContent = state.passcode ? '🔒 passcode set' : 'no passcode';
+}
+function renderLibrary() {
+  document.getElementById('libGrid').innerHTML = visibleApps().map(appTile).join('');
+}
+function renderAll() { renderHome(); renderLibrary(); }
+
+function showTab(which) {
+  document.getElementById('tabHome').classList.toggle('active', which === 'home');
+  document.getElementById('tabLibrary').classList.toggle('active', which === 'library');
+  document.getElementById('homeView').style.display = which === 'home' ? '' : 'none';
+  document.getElementById('libraryView').style.display = which === 'library' ? '' : 'none';
+}
+
+/* ===== hide mode ===== */
+function toggleHideMode() {
+  state.hideMode = !state.hideMode; save(); renderHome();
+  document.getElementById('vaultHideSwitch').classList.toggle('on', state.hideMode);
+  toast(state.hideMode ? 'Hide Mode ON' : 'Hide Mode OFF');
+}
+function toggleHideModeVault() {
+  state.hideMode = !state.hideMode; save(); renderHome();
+  document.getElementById('vaultHideSwitch').classList.toggle('on', state.hideMode);
+  toast(state.hideMode ? 'Hide Mode ON' : 'Hide Mode OFF');
+}
+
+/* ===== tap behavior (Home Screen icons) ===== */
+function tapIcon(id) {
+  if (state.hideMode && !state.hidden.includes(id)) {
+    state.hidden.push(id); save();
+    toast('Moved to the Hidden folder');
+    renderAll(); if (vaultOpen()) renderVault();
+    return; // swallow — app is NOT launched
+  }
+  toast(`Opening ${appById(id).name}… (demo)`);
+}
+
+/* ===== vault ===== */
+let locked = false;
+const vaultOpenEl = () => document.getElementById('overlay');
+const vaultOpen = () => vaultOpenEl().style.display !== 'none';
+function openVault() {
+  document.getElementById('overlay').style.display = 'flex';
+  locked = !!state.passcode;
+  renderVault();
+}
+function closeVault() { document.getElementById('overlay').style.display = 'none'; }
+
+function renderVault() {
+  const has = !!state.passcode;
+  document.getElementById('sheetSub').textContent = has
+    ? (locked ? 'Locked — enter your passcode' : `Folder • ${state.hidden.length} hidden app(s)`)
+    : 'No passcode — open ⚙️ to set one';
+  document.getElementById('vaultHideSwitch').classList.toggle('on', state.hideMode);
+
+  const vaultView = document.getElementById('vaultView');
+  const lockView = document.getElementById('lockView');
+  vaultView.style.display = (!has || !locked) ? '' : 'none';
+  lockView.style.display = (has && locked) ? '' : 'none';
+
+  if (!has || !locked) {
+    const grid = document.getElementById('vaultGrid');
+    document.getElementById('vaultEmpty').style.display = state.hidden.length ? 'none' : '';
+    grid.innerHTML = state.hidden.map(id => {
+      const a = appById(id);
+      return `<div class="app" onclick="toast('Opening ${a.name}… (demo)')"
+        oncontextmenu="event.preventDefault();unhidePrompt('${id}')"
+        title="tap: open · long-press/right-click: move back to Home Screen">
+        <div class="ic" style="background:${a.c}">${a.e}</div><div class="nm">${a.name}</div></div>`;
+    }).join('');
+  } else {
+    buildPad();
+  }
+}
+
+function unhidePrompt(id) {
+  const a = appById(id);
+  if (confirm(`Move "${a.name}" back to the Home Screen?`)) {
+    state.hidden = state.hidden.filter(x => x !== id); save();
+    toast('Back on the Home Screen');
+    renderAll(); renderVault();
+  }
+}
+
+/* ===== passcode ===== */
+let buf = '';
+function buildPad() {
+  const pad = document.getElementById('pad');
+  pad.innerHTML = '';
+  const keys = ['1','2','3','4','5','6','7','8','9','','0','⌫'];
+  keys.forEach(k => {
+    if (!k) { const d = document.createElement('div'); pad.appendChild(d); return; }
+    const b = document.createElement('div');
+    b.className = 'key'; b.textContent = k;
+    b.onclick = () => press(k);
+    pad.appendChild(b);
+  });
+  refreshDots();
+}
+function refreshDots() {
+  const dots = document.getElementById('dots');
+  dots.innerHTML = '';
+  for (let i = 0; i < 4; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < buf.length ? ' on' : '');
+    dots.appendChild(d);
+  }
+}
+function press(k) {
+  if (k === '⌫') { buf = buf.slice(0, -1); }
+  else if (k && buf.length < 4) { buf += k; }
+  refreshDots();
+  if (buf.length === 4) {
+    if (buf === state.passcode) { locked = false; buf = ''; renderVault(); toast('Unlocked 🔓'); }
+    else { const sheet = document.getElementById('sheet'); sheet.classList.add('shake'); setTimeout(()=>sheet.classList.remove('shake'),300); buf=''; refreshDots(); toast('Wrong passcode'); }
+  }
+}
+
+/* ===== gear / settings (inside the folder — no Settings app) ===== */
+function openGear() {
+  const has = !!state.passcode;
+  const items = [];
+  if (!has) items.push(['Set Passcode', setPasscodeFlow]);
+  else items.push(['Change Passcode', setPasscodeFlow]);
+  if (has) items.push(['Remove Passcode', () => { if (confirm('Remove the passcode? The folder will open without one.')) { state.passcode=''; save(); locked=false; renderVault(); renderAll(); toast('Passcode removed'); } }]);
+  if (has && !locked) items.push(['Lock Now', () => { locked=true; buf=''; renderVault(); }]);
+  items.push(['How it works', howItWorks]);
+  const pick = prompt('⚙️ Hidden Folder settings\n\n' + items.map((x,i)=>`${i+1}. ${x[0]}`).join('\n') + `\n\nType the number:\n\n(cancel = close)`);
+  const n = parseInt(pick, 10);
+  if (n >= 1 && n <= items.length) items[n-1][1]();
+}
+function setPasscodeFlow() {
+  const p1 = prompt('Set passcode — enter exactly 4 digits:');
+  if (!p1) return;
+  if (!/^\d{4}$/.test(p1)) { toast('Must be exactly 4 digits'); return; }
+  if (state.passcode) { // change: ask old first (mirrors protection)
+    const old = prompt('Enter your current passcode:');
+    if (old !== state.passcode) { toast('Current passcode is wrong'); return; }
+  }
+  const p2 = prompt('Confirm passcode — enter it again:');
+  if (p2 === p1) {
+    state.passcode = p1; save(); locked = false; buf = '';
+    renderVault(); renderAll(); toast('Passcode saved 🔒');
+  } else { toast("Passcodes didn't match"); }
+}
+function howItWorks() {
+  alert(
+    'How it works\n\n' +
+    '• Hide Mode — flip it ON, then tap any Home Screen\n  icon once: it moves into the Hidden folder.\n\n' +
+    '• Protected — with a passcode set, the folder locks.\n  Unlock with your 4-digit code.\n\n' +
+    '• Launch — tap an app inside the folder to open it.\n\n' +
+    '• Unhide — long-press (or right-click) an app inside\n  the folder to move it back.'
+  );
+}
+
+/* ===== init ===== */
+renderAll();
+renderVault();
+</script>
+</body>
+</html>
