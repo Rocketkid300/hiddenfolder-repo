@@ -8,22 +8,22 @@ Codename: ios
 Architectures: iphoneos-arm64
 Components: main
 Description: Hidden Folder tweak + Hidden Vault app for Dopamine (rootless)
-Date: Mon, 21 Sep 2026 02:58:35 UTC
+Date: Mon, 21 Sep 2026 03:48:54 UTC
 MD5Sum:
- 28bf21cb00c5c21ca4ccd403281e9d6b             3057 Packages
- 1d4d55bcddbc5c52bec9bb269da41008             1001 Packages.gz
+ dc28a3393055bb16638305ccbac4258f             4556 Packages
+ 3a73371e104c63c1234f198e9d628314             1172 Packages.gz
 SHA256:
- 20eeada9ed22ad68b0c0002786675a0bddd06ac3fdce175ecf158fc5d4f7d17a             3057 Packages
- e5b6a920db8ef9892ab5e5edd68585419b10a72b2abd8a4dff738f5e48791f9d             1001 Packages.gz
+ 5d34356000fbb936e6e6ed4e6cb3d25be2940fda05bb980209ab64d092caeb50             4556 Packages
+ bf9349a216ecd6aa6caca0a8b720f77c9fb4b74fef9ab388b24371e343ccc503             1172 Packages.gz
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAEBCgAdFiEE7zh/wbjB9gdFBAb/WpKywYHtHSMFAmqwnVsACgkQWpKywYHt
-HSOW6Af/QB4zj2zY7/G4IPDxsvjSfh4nTEuflbQtVWtUYszEiTab+5vad7h2uU8I
-NL0Yvj8zuONSvp2fqmmwjAQSalnkRAnRYUw/Ytxphho4SZ7S3qmrot7EHH9Jd99h
-lLdtez7nRkqbqRz1QA5yYqJ5UTz6U7wSbHsJc2H3Sxh8SpAGU4b4frYXZJLp8SGz
-auaJo4ucHtbhVJKzFsfRm9Txv8l09NUiHN9x4AeZXP/OCMbF5lIIalqMvnj7Ve51
-oZYc+ZawW9pPHuxtJOb7XZGLeOr4/FG5F9PgnC3eLBYXd4z3foRaEn0LjyfC74bF
-O+L6PlaZS5bhoUnG86qbDEb8mwuU+Q==
-=wZc6
+iQEzBAEBCgAdFiEE7zh/wbjB9gdFBAb/WpKywYHtHSMFAmqwqSYACgkQWpKywYHt
+HSMjgAf+N0aGmJFqwCsfRVmtMTpOcQCvGw/mXT+tkLERrGQpSoIArZRDa8GyJgvG
+3HEMrsdOKlvF9M3vaLt/O51yo1rGk3nuxch5V07LqPVzfnVvw++fpEFLqo0SkSU7
+h/Z2g+HX6rEyj18+p52fJP7SRK5butN/QRTYJWO5Wk7AemgAJ9P/5NWMUEnEFAdK
+q8dQsiH2cQdjXgyzK1eu9zmPMgwlKVJFkkNNRT67AmHcrs2KBwRp5WvG7pF6eI7D
++B9dxD0HqiAnrQrRwJjJMgC8C/oWsAvLMewIXat4hKKvyH3e/pz0rhtpY1xAlDut
+TA8h+q8veov1gid6mV9FOKfk624w7Q==
+=7lrq
 -----END PGP SIGNATURE-----

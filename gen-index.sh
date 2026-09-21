@@ -25,7 +25,7 @@ for deb in "$DEBS_DIR"/*.deb; do
   [ -f "$deb" ] || continue
 
   base="$(basename "$deb")"
-  # Disguise variants are versioned like 2.2.1+calculator — never index them.
+  # Disguise variants are versioned like 3.0+calculator — never index them.
   case "$base" in
     *+*)
       echo "!! refusing to index variant leaked into debs/: $base" >&2

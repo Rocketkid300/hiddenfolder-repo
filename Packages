@@ -42,6 +42,38 @@ Filename: debs/com.bigpickle.hiddenfolder_2.0.8_iphoneos-arm64.deb
 Size: 22304
 MD5sum: 6d9e8f0d8ea3643491095657c3af5014
 
+Package: com.bigpickle.hiddenfolder
+Name: Hidden Folder
+Description: Hidden Folder 2.0 — full rewrite. Long-press any Home Screen app and pick "Add to Hidden Folder" to hide it for real (vanishes from Home Screen, App Library and Spotlight). A green banner on respring proves the tweak loaded.
+ .
+ Changelog:
+ 3.0 - Unified the release train: single version for the tweak and vault, no banner UI, App Library cleanup, and calculator-first disguise flow.
+Maintainer: Rocketkid300 <rocketkid300@users.noreply.github.com>
+Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)
+Firmware: >= 15.0
+Architecture: iphoneos-arm64
+Version: 2.0.9
+Installed-Size: 184
+Filename: debs/com.bigpickle.hiddenfolder_2.0.9_iphoneos-arm64.deb
+Size: 22094
+MD5sum: a8982f335c39d5bdeb11d546f622bcca
+
+Package: com.bigpickle.hiddenvault
+Name: Hidden Vault
+Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
+Maintainer: Rocketkid300 <rocketkid300@users.noreply.github.com>
+Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
+Section: Apps
+Depends: firmware (>= 15.0)
+Architecture: iphoneos-arm64
+Version: 2.3.1
+Installed-Size: 796
+Filename: debs/com.bigpickle.hiddenvault_2.3.1_iphoneos-arm64.deb
+Size: 490316
+MD5sum: c2a928943cc855b8bcbab79c068ada3e
+
 Package: com.bigpickle.hiddenvault
 Name: Hidden Vault
 Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
