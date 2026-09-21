@@ -1,4 +1,4 @@
-# 📦 Big Pickle Repo — Hidden Folder
+# 📦 Rocket Repo — Hidden Folder
 
 A Sileo-compatible repo hosting **Hidden Folder** — a Dopamine (rootless, iOS 15–16)
 tweak that adds a passcode-protected *Hidden* folder at the end of the App Library.
