@@ -5,10 +5,10 @@ Codename: ios
 Architectures: iphoneos-arm64
 Components: main
 Description: Hidden Folder tweak + Hidden Vault app for Dopamine (rootless)
-Date: Mon, 21 Sep 2026 03:49:33 UTC
+Date: Mon, 21 Sep 2026 04:36:57 UTC
 MD5Sum:
- d1a4a3bb9515a0b5ec8b05bb5505a546             1499 Packages
- 7aeb371b55a5f9a13e3218cab35cba13              723 Packages.gz
+ a4436b5acc07b0ae24b700f09792a114             2158 Packages
+ 48cc39185ec4f24e1aea9e314a195aa8              774 Packages.gz
 SHA256:
- 9f2a242ab1109f81bb5238fdaf193ce256d928c544d841fac4373af80ae7aa5f             1499 Packages
- 388e269bccae9efb995f16ab8dcfa49fc60b95df1e0df7b05791283d61b48c15              723 Packages.gz
+ cd06f9b7fa930798ab35cfb436afc1f0641951b32bbb718191bd2d8f6f5310b6             2158 Packages
+ 21b34ada441844597f987bc6957718056d439c3a160b69a19d909d3869a18eee              774 Packages.gz
