@@ -24,9 +24,9 @@ Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
 Section: Apps
 Depends: firmware (>= 15.0)
 Architecture: iphoneos-arm64
-Version: 2.3.6
+Version: 2.3.7
 Installed-Size: 796
-Filename: debs/com.bigpickle.hiddenvault_2.3.6_iphoneos-arm64.deb
-Size: 487728
-MD5sum: 08c70c816007d925249a4c7c87adb70f
+Filename: debs/com.bigpickle.hiddenvault_2.3.7_iphoneos-arm64.deb
+Size: 488684
+MD5sum: 95e92062d3ac1971c897d14bb19fac52
 
