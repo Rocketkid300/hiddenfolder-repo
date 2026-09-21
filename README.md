@@ -24,7 +24,7 @@ https://rocketkid300.github.io/hiddenfolder-repo/
 
 If tweaks are giving you trouble, skip them entirely:
 
-1. In Sileo install **Hidden Vault** (`com.bigpickle.hiddenvault`, 3.0).
+1. In Sileo install **Hidden Vault** (`com.bigpickle.hiddenvault`, 2.3.3).
 2. Its icon appears on your Home Screen (respring once if not immediate).
 3. Open it → **⚙️ Set Passcode** → **➕ Add Apps** → done.
 
@@ -46,7 +46,7 @@ Everything lives inside the folder itself:
 5. **Unhide:** long-press an app inside the Hidden folder.
 6. **Change/remove passcode, lock, or how-it-works:** ⚙️ gear inside the folder.
 
-Dependencies: only `mobilesubstrate` (ElleKit on Dopamine). Since 3.0 the arm64e
+Dependencies: only `mobilesubstrate` (ElleKit on Dopamine). Since 2.0.9 the arm64e
 slice is built as **new ABI** (via Allemande), so it loads on A12+ exactly like any
 standard repo tweak — **no `oldabi`, no `ellekit.space`, no extra repos needed.**
 
