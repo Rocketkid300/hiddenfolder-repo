@@ -16,24 +16,6 @@ Filename: debs/com.bigpickle.hiddenfolder_2.0.10_iphoneos-arm64.deb
 Size: 19694
 MD5sum: 2b89703c931e0887e8b4f0d52ec99c43
 
-Package: com.bigpickle.hiddenfolder
-Name: Hidden Folder
-Description: Hidden Folder 2.0 — full rewrite. Long-press any Home Screen app and pick "Add to Hidden Folder" to hide it for real (vanishes from Home Screen, App Library and Spotlight). A green banner on respring proves the tweak loaded.
- .
- Changelog:
- 3.0 - Unified the release train: single version for the tweak and vault, no banner UI, App Library cleanup, and calculator-first disguise flow.
-Maintainer: Rocketkid300 <rocketkid300@users.noreply.github.com>
-Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000)
-Firmware: >= 15.0
-Architecture: iphoneos-arm64
-Version: 2.0.9
-Installed-Size: 184
-Filename: debs/com.bigpickle.hiddenfolder_2.0.9_iphoneos-arm64.deb
-Size: 22094
-MD5sum: a8982f335c39d5bdeb11d546f622bcca
-
 Package: com.bigpickle.hiddenvault
 Name: Hidden Vault
 Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
@@ -42,23 +24,9 @@ Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
 Section: Apps
 Depends: firmware (>= 15.0)
 Architecture: iphoneos-arm64
-Version: 2.3.3
+Version: 2.3.5
 Installed-Size: 796
-Filename: debs/com.bigpickle.hiddenvault_2.3.3_iphoneos-arm64.deb
-Size: 485838
-MD5sum: 7afe43309619f4a2ab702639248be7b7
-
-Package: com.bigpickle.hiddenvault
-Name: Hidden Vault
-Description: Hidden Vault 2.0 — full rewrite. The passcode/Face-ID-gated viewer for your hidden apps: open it to see and launch everything the tweak hid, swipe to unhide, emergency Unhide All in gear. Same vault, same codes, same hidden list as 1.x.
-Maintainer: Rocketkid300 <rocketkid300@users.noreply.github.com>
-Author: Rocketkid300 <rocketkid300@users.noreply.github.com>
-Section: Apps
-Depends: firmware (>= 15.0)
-Architecture: iphoneos-arm64
-Version: 2.3.4
-Installed-Size: 796
-Filename: debs/com.bigpickle.hiddenvault_2.3.4_iphoneos-arm64.deb
-Size: 485652
-MD5sum: ab4a2617e689a0eb9672343d74045480
+Filename: debs/com.bigpickle.hiddenvault_2.3.5_iphoneos-arm64.deb
+Size: 486852
+MD5sum: 4bccf6a3ceea3e56047bfc6ad3509d31
 
